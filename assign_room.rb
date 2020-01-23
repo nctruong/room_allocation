@@ -26,7 +26,7 @@ class AssignRoom < BaseService
   end
 
   def initialize_bookings(bookings)
-    bookings.map { |booking| Booking.new(booking) }
+    bookings.map { |booking| Booking.new(booking) }.sort_by { |booking| booking.checkin }
   end
 
   def checkout_lteq_checkin?(room, booking)
