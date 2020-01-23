@@ -29,12 +29,12 @@ class AssignRoom < BaseService
     bookings.map { |booking| Booking.new(booking) }.sort_by { |booking| booking.checkin }
   end
 
-  def checkout_lteq_checkin?(room, booking)
+  def checkout_lteq_next_checkin?(room, booking)
     (room.last.checkout <= booking.checkin)
   end
 
   def assignable?(room, booking)
-    room.empty? || checkout_lteq_checkin?(room, booking)
+    room.empty? || checkout_lteq_next_checkin?(room, booking)
   end
 
   def to_a
