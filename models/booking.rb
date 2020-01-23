@@ -3,7 +3,13 @@ class Booking
 
   def initialize(attributes = {})
     @id       = attributes[:id]
-    @checkin  = Date.parse(attributes[:checkin])
-    @checkout = Date.parse(attributes[:checkout])
+    @checkin  = to_date(attributes[:checkin])
+    @checkout = to_date(attributes[:checkout])
+  end
+
+  private
+
+  def to_date(date)
+    Date.parse(date)
   end
 end
