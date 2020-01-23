@@ -40,5 +40,45 @@ describe 'AssignRoom' do
         expect(@results[2]).to eq([4])
       end
     end
+
+    context 'when only 2 room provided' do
+      before do
+        @results = AssignRoom.call(random_bookings, 2)
+      end
+
+      it 'returns first booking collection equals [1,3,6,8,9]' do
+        expect(@results[0]).to eq([1,3,6,8,9])
+      end
+
+      it 'returns second booking collection equals [2,5,7]' do
+        expect(@results[1]).to eq([2,5,7])
+      end
+
+      it 'returns third booking collection equals nil' do
+        expect(@results[2]).to be_nil
+      end
+    end
+
+    context 'when only 4 room provided' do
+      before do
+        @results = AssignRoom.call(random_bookings, 4)
+      end
+
+      it 'returns first booking collection equals [1,3,6,8,9]' do
+        expect(@results[0]).to eq([1,3,6,8,9])
+      end
+
+      it 'returns second booking collection equals [2,5,7]' do
+        expect(@results[1]).to eq([2,5,7])
+      end
+
+      it 'returns third booking collection equals [4]' do
+        expect(@results[2]).to eq([4])
+      end
+
+      it 'returns last booking collection equals empty' do
+        expect(@results[3]).to be_empty
+      end
+    end
   end
 end
