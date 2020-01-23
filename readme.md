@@ -18,3 +18,7 @@ rake
 ```ruby
 rspec spec/assign_room_spec.rb
 ```
+
+### Ruby
+ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-darwin17]
+
