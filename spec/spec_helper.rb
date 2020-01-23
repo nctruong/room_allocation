@@ -1,2 +1,6 @@
 require 'byebug'
-require_relative '../main'
+require 'json'
+require 'date'
+require_relative '../base_service'
+require_relative '../models/booking'
+require_relative '../assign_room'
