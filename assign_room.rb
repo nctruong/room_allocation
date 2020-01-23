@@ -1,4 +1,3 @@
-# Assigning available rooms for bookings
 class AssignRoom < BaseService
   attr_reader :bookings
   attr_reader :assigned_rooms
@@ -12,6 +11,7 @@ class AssignRoom < BaseService
     bookings.each do |booking|
       assigned_rooms.keys.each do |room|
         next unless assignable?(assigned_rooms[room], booking)
+
         assigned_rooms[room] << booking
         break
       end
@@ -29,12 +29,12 @@ class AssignRoom < BaseService
     bookings.map { |booking| Booking.new(booking) }
   end
 
-  def checkout_lteq_checkin?(current_room, booking)
-    (current_room.last.checkout <= booking.checkin)
+  def checkout_lteq_checkin?(room, booking)
+    (room.last.checkout <= booking.checkin)
   end
 
-  def assignable?(current_room, booking)
-    current_room.empty? || checkout_lteq_checkin?(current_room, booking)
+  def assignable?(room, booking)
+    room.empty? || checkout_lteq_checkin?(room, booking)
   end
 
   def to_a
